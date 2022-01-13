@@ -29,7 +29,7 @@ async function run(){
     if (buses[bus.attributes.label]) {
       updateMarker(buses[bus.attributes.label], bus.attributes.longitude, bus.attributes.latitude); // attempts to update
    } else {
-      buses[bus.attributes.label] = makeMarker(bus.attributes.longitude, bus.attributes.latitude); // if it doesnt exist create a marker
+      buses[bus.attributes.label] = makeMarker(bus.attributes.longitude, bus.attributes.latitude); 
    }; 
   });
   setTimeout(run, 1000);
