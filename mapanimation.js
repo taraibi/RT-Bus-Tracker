@@ -13,9 +13,7 @@ let map = new mapboxgl.Map({
 
 // create a marker for each individual bus
 const makeMarker = function (lng, lat) {
-  return new mapboxgl.Marker()
-    .setLngLat([lng, lat])
-    .addTo(map);
+  return new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map);
 };
 
 // update marker
@@ -23,24 +21,25 @@ const updateMarker = function (marker, lng, lat) {
   marker.setLngLat([lng, lat]);
 };
 
+//bus data
+async function getBusLocations(){
+  const url = 'https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip';
+  const response = await fetch(url);
+  const json     = await response.json();
+  return json.data;
+};
+
 async function run(){
   const locations = await getBusLocations(); // ping for bus location
   locations.forEach((bus) => {
     if (buses[bus.attributes.label]) {
       updateMarker(buses[bus.attributes.label], bus.attributes.longitude, bus.attributes.latitude); // attempts to update
-   } else {
+   } 
+    else {
       buses[bus.attributes.label] = makeMarker(bus.attributes.longitude, bus.attributes.latitude); 
    }; 
   });
   setTimeout(run, 1000);
-};
-
-// Request bus data from MBTA
-async function getBusLocations(){
-const url = 'https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip';
-const response = await fetch(url);
-const json     = await response.json();
-return json.data;
 };
 
 run();
