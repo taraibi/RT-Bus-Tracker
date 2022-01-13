@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.map-overlay {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+}
+
+.map-overlay div {
+  border: rgb(182, 178, 178) solid 2px;
+  background-color: rgb(0, 0, 0,0.5);
+  color: #bdb2be;
+  font-size: 2em;
+  width: 150px;
+  border-radius: 8px;
+  text-align: center;
+}
