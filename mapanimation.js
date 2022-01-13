@@ -36,7 +36,7 @@ async function run(){
       updateMarker(buses[bus.attributes.label], bus.attributes.longitude, bus.attributes.latitude); // attempts to update
    } 
     else {
-      buses[bus.attributes.label] = makeMarker(bus.attributes.longitude, bus.attributes.latitude); 
+      buses[bus.attributes.label] = makeMarker(bus.attributes.longitude, bus.attributes.latitude); // adds 
    }; 
   });
   setTimeout(run, 1000);
